@@ -6,21 +6,22 @@ public class Grid : MonoBehaviour
 
 	public GameObject _tilePrefab;
 
-	public int _gridWidth = 3;
-	public int _gridHeight = 3;
+	private int _width;
+	private int _height;
 
 	void Start () 
 	{
-		CreateTiles();	
 	}
 
-	void CreateTiles()
+	public void CreateTiles(int width, int height)
 	{
-		for(int x=0; x<_gridWidth; ++x)
+		_width = width;
+		_height = height;
+		for(int x=0; x<_width; ++x)
 		{
-			for(int z=0; z<_gridHeight; ++z)
+			for(int z=0; z<_height; ++z)
 			{
-				Vector3 tilePosition = new Vector3(CalculateTilePosition(x, _gridWidth), 0, CalculateTilePosition(z, _gridHeight));
+				Vector3 tilePosition = new Vector3(CalculateTilePosition(x, _width), 0, CalculateTilePosition(z, _height));
 				Instantiate(_tilePrefab, tilePosition, transform.rotation);
 			}
 		}

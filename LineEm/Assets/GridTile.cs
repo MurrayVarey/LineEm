@@ -11,6 +11,7 @@ public class GridTile : MonoBehaviour
 	void Start () 
 	{
 		_renderer = GetComponent<Renderer> ();
+		_renderer.material = _idleMaterial;
 	}
 
 	void OnMouseEnter()
