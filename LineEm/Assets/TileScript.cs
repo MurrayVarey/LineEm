@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GridTile : MonoBehaviour 
+public class TileScript : MonoBehaviour 
 {
 	public Material _idleMaterial;
 	public Material _activeMaterial;
+
+	public int _row;
+	public int _column;
 
 	private Renderer _renderer;
 
@@ -12,11 +15,17 @@ public class GridTile : MonoBehaviour
 	{
 		_renderer = GetComponent<Renderer> ();
 		_renderer.material = _idleMaterial;
+		_row = -1;
+		_column = -1;
 	}
 
-	void OnMouseEnter()
+	void OnMouseOver()
 	{
 		_renderer.material = _activeMaterial;
+		/*if(Input.GetMouseButtonDown(0))
+		{
+			bool here = true;
+		}*/
 	}
 
 	void OnMouseExit()

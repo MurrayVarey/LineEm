@@ -17,12 +17,15 @@ public class Grid : MonoBehaviour
 	{
 		_width = width;
 		_height = height;
-		for(int x=0; x<_width; ++x)
+		for(int row=0; row<_width; ++row)
 		{
-			for(int z=0; z<_height; ++z)
+			for(int column=0; column<_height; ++column)
 			{
-				Vector3 tilePosition = new Vector3(CalculateTilePosition(x, _width), 0, CalculateTilePosition(z, _height));
-				Instantiate(_tilePrefab, tilePosition, transform.rotation);
+				Vector3 tilePosition = new Vector3(CalculateTilePosition(row, _width), 0, CalculateTilePosition(column, _height));
+				GameObject tile = Instantiate(_tilePrefab, tilePosition, transform.rotation) as GameObject;
+				TileScript tileScript = tile.GetComponent<TileScript>();
+				tileScript._row = row;
+				tileScript._column = column;
 			}
 		}
 	}
