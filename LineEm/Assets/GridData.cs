@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GridData : MonoBehaviour
+public class GridData 
 {
+	private int _width;
+	private int _height;
 
 	public enum eTileState
 	{
@@ -10,10 +12,6 @@ public class GridData : MonoBehaviour
 		nought,
 		cross
 	}
-
-	private int _width;
-	private int _height;
-
 	public eTileState _nextMove;
 	private eTileState[,] _tileStates;
 
