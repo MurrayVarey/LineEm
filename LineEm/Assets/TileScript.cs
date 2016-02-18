@@ -11,21 +11,25 @@ public class TileScript : MonoBehaviour
 
 	private Renderer _renderer;
 
+	void Awake ()
+	{
+		_row = -1;
+		_column = -1;
+	}
+
 	void Start () 
 	{
 		_renderer = GetComponent<Renderer> ();
 		_renderer.material = _idleMaterial;
-		_row = -1;
-		_column = -1;
 	}
 
 	void OnMouseOver()
 	{
 		_renderer.material = _activeMaterial;
-		/*if(Input.GetMouseButtonDown(0))
+		if(Input.GetMouseButtonDown(0))
 		{
-			bool here = true;
-		}*/
+			EventManager.OnTileClickedEvent(this);
+		}
 	}
 
 	void OnMouseExit()

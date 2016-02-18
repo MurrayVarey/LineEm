@@ -15,10 +15,12 @@ public class GameController : MonoBehaviour {
 		_grid.CreateTiles(_gridWidth, _gridHeight);
 
 		_gridData = new GridData(_gridWidth, _gridHeight);
+
+		EventManager.OnTileClicked += UpdateGridData;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
+	public void UpdateGridData(TileScript tile)
+	{
+		print("Tile clicked: Row " + tile._row + " Column " + tile._column);
 	}
 }
