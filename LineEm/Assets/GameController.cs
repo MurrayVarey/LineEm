@@ -9,18 +9,22 @@ public class GameController : MonoBehaviour {
 
 	private GridData _gridData;
 
-	// Use this for initialization
-	void Start () {
-		_grid = GameObject.Find("Grid").GetComponent<Grid>();
-		_grid.CreateTiles(_gridWidth, _gridHeight);
-
+	void Awake()
+	{
 		_gridData = new GridData(_gridWidth, _gridHeight);
 
 		EventManager.OnTileClicked += UpdateGridData;
 	}
+
+	// Use this for initialization
+	void Start () {
+		_grid = GameObject.Find("Grid").GetComponent<Grid>();
+		_grid.CreateTiles(_gridWidth, _gridHeight);
+	}
 	
 	public void UpdateGridData(TileScript tile)
 	{
-		print("Tile clicked: Row " + tile._row + " Column " + tile._column);
+		//print("Tile clicked: Row " + tile._row + " Column " + tile._column);
+		_gridData.UpdateTile(tile._row, tile._column);
 	}
 }
