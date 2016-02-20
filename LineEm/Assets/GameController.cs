@@ -16,15 +16,27 @@ public class GameController : MonoBehaviour {
 		EventManager.OnTileClicked += UpdateGridData;
 	}
 
-	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		_grid = GameObject.Find("Grid").GetComponent<Grid>();
 		_grid.CreateTiles(_gridWidth, _gridHeight);
 	}
 	
 	public void UpdateGridData(TileScript tile)
 	{
-		//print("Tile clicked: Row " + tile._row + " Column " + tile._column);
-		_gridData.UpdateTile(tile._row, tile._column);
+		print("Tile clicked: Column " + tile._column   + " Row " + tile._row);
+		bool moveMade = _gridData.PlaceMove(tile._column, tile._row);
+		if(moveMade)
+		{
+			bool winner = _gridData.IsWinningMove(tile._column, tile._row);
+			if(winner)
+			{
+				print ("Winner!");
+			}
+			else
+			{
+				_gridData.UpdateMove();
+			}
+		}
 	}
 }
