@@ -6,6 +6,8 @@ public class TileScript : MonoBehaviour
 	public Material _idleMaterial;
 	public Material _activeMaterial;
 
+	public GameObject _stateDisplay;
+
 	public int _row;
 	public int _column;
 

@@ -5,6 +5,7 @@ public class GridData
 {
 	private int _width;
 	private int _height;
+	private int _moveCount;
 
 	public enum eTileState
 	{
@@ -21,6 +22,7 @@ public class GridData
 		_height = height;
 		_tileStates = new eTileState[width, height];
 		_move = eTileState.nought;
+		_moveCount = 0;
 	}
 
 	public bool PlaceMove(int column, int row)
@@ -29,6 +31,7 @@ public class GridData
 		if(IsValidTile(column, row) && IsEmptyTile(column, row))
 		{
 			_tileStates[column, row] = _move;
+			_moveCount++;
 			return true;
 		}
 		return false;
@@ -107,6 +110,11 @@ public class GridData
 			}
 		}
 		return true;
+	}
+
+	public bool IsDraw()
+	{
+		return _moveCount == _width * _height;
 	}
 
 }

@@ -28,10 +28,13 @@ public class GameController : MonoBehaviour {
 		bool moveMade = _gridData.PlaceMove(tile._column, tile._row);
 		if(moveMade)
 		{
-			bool winner = _gridData.IsWinningMove(tile._column, tile._row);
-			if(winner)
+			if(_gridData.IsWinningMove(tile._column, tile._row))
 			{
 				print ("Winner!");
+			}
+			else if(_gridData.IsDraw())
+			{
+				print ("Draw");
 			}
 			else
 			{
