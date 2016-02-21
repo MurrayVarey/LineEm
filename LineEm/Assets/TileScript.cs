@@ -7,6 +7,7 @@ public class TileScript : MonoBehaviour
 	public Material _activeMaterial;
 
 	public GameObject _stateDisplay;
+	public TextMesh _stateText;
 
 	public int _row;
 	public int _column;
@@ -23,6 +24,9 @@ public class TileScript : MonoBehaviour
 	{
 		_renderer = GetComponent<Renderer> ();
 		_renderer.material = _idleMaterial;
+
+		_stateText = _stateDisplay.GetComponent<TextMesh>();
+		_stateText.text = "";
 	}
 
 	void OnMouseOver()
