@@ -1,13 +1,11 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\TileScript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Controller\GameController.cs">
     <Files>
-      <File FileName="Assets\GameController.cs" Line="37" Column="20" />
-      <File FileName="Assets\GridData.cs" Line="98" Column="36" />
-      <File FileName="Assets\Grid.cs" Line="16" Column="28" />
-      <File FileName="Assets\TileScript.cs" Line="9" Column="34" />
-      <File FileName="Assets\EventManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\LineDefinition.cs" Line="1" Column="1" />
+      <File FileName="Assets\View\Grid.cs" Line="17" Column="3" />
+      <File FileName="Assets\View\TileScript.cs" Line="46" Column="41" />
+      <File FileName="Assets\Controller\GameController.cs" Line="31" Column="40" />
+      <File FileName="Assets\Model\GridData.cs" Line="115" Column="25" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

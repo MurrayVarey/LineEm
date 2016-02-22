@@ -12,6 +12,7 @@ GameObject:
   - 65: {fileID: 6576832}
   - 23: {fileID: 2333638}
   - 114: {fileID: 11484976}
+  - 114: {fileID: 11482492}
   m_Layer: 0
   m_Name: GridTile
   m_TagString: Untagged
@@ -153,6 +154,18 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4294967295
+--- !u!114 &11482492
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 137002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42d19085405ab17429c3dd923fb010e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tilePrefab: {fileID: 0}
 --- !u!114 &11484976
 MonoBehaviour:
   m_ObjectHideFlags: 1

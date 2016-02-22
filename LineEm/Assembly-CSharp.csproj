@@ -45,12 +45,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\EventManager.cs" />
-     <Compile Include="Assets\GameController.cs" />
-     <Compile Include="Assets\Grid.cs" />
-     <Compile Include="Assets\GridData.cs" />
-     <Compile Include="Assets\LineDefinition.cs" />
-     <Compile Include="Assets\TileScript.cs" />
+     <Compile Include="Assets\Controller\EventManager.cs" />
+     <Compile Include="Assets\Controller\GameController.cs" />
+     <Compile Include="Assets\Model\GridData.cs" />
+     <Compile Include="Assets\Model\LineDefinition.cs" />
+     <Compile Include="Assets\View\Grid.cs" />
+     <Compile Include="Assets\View\TileScript.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

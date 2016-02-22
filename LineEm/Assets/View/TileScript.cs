@@ -42,4 +42,9 @@ public class TileScript : MonoBehaviour
 	{
 		_renderer.material = _idleMaterial;
 	}
+
+	public void UpdateDisplay(GridData.eTileState state)
+	{
+		_stateText.text = state == GridData.eTileState.nought ? "O" : "X" ;
+	}
 }

@@ -112,7 +112,7 @@ public class GridData
 		return true;
 	}
 
-	public bool IsDraw()
+	public bool IsStalemate()
 	{
 		return _moveCount == _width * _height;
 	}
