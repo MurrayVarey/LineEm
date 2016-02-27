@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class GameController : MonoBehaviour {
@@ -22,7 +23,7 @@ public class GameController : MonoBehaviour {
 		_grid.CreateTiles(_gridWidth, _gridHeight);
 	}
 	
-	public void UpdateGridData(TileScript tile)
+	public void UpdateGridData(TileDisplay tile)
 	{
 		print("Tile clicked: Column " + tile._column   + " Row " + tile._row);
 		bool moveMade = _gridData.PlaceMove(tile._column, tile._row);
@@ -31,11 +32,13 @@ public class GameController : MonoBehaviour {
 			tile.UpdateDisplay(_gridData._move);
 			if(_gridData.IsWinningMove(tile._column, tile._row))
 			{
-				print ("Winner!");
+				SceneManager.LoadScene("EndGame");
+				//print ("Winner!");
 			}
 			else if(_gridData.IsStalemate())
 			{
-				print ("Draw");
+				SceneManager.LoadScene("EndGame");
+				//print ("Draw");
 			}
 			else
 			{

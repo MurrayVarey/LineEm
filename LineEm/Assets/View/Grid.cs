@@ -23,9 +23,9 @@ public class Grid : MonoBehaviour
 			{
 				Vector3 tilePosition = new Vector3(CalculateTilePosition(column, _height), 0, CalculateTilePosition(row, _width));
 				GameObject tile = Instantiate(_tilePrefab, tilePosition, transform.rotation) as GameObject;
-				TileScript tileScript = tile.GetComponent<TileScript>();
-				tileScript._column = column;
-				tileScript._row = row;
+				TileDisplay tileDisplay = tile.GetComponent<TileDisplay>();
+				tileDisplay._column = column;
+				tileDisplay._row = row;
 			}
 		}
 	}

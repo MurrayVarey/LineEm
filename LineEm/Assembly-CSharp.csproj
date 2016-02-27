@@ -51,7 +51,7 @@
      <Compile Include="Assets\Model\LineDefinition.cs" />
      <Compile Include="Assets\View\Grid.cs" />
      <Compile Include="Assets\View\LoadOnClick.cs" />
-     <Compile Include="Assets\View\TileScript.cs" />
+     <Compile Include="Assets\View\TileDisplay.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

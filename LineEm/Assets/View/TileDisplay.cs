@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TileScript : MonoBehaviour 
+public class TileDisplay : MonoBehaviour 
 {
 	public Material _idleMaterial;
 	public Material _activeMaterial;
