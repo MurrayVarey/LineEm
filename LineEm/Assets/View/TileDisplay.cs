@@ -53,17 +53,10 @@ public class TileDisplay : MonoBehaviour
 	{
 		_column = column;
 		_row = row;
-		//float uOffset = (float)column/3;
-		//float yOffset = (float)row/3;
-		//_renderer.material.SetTextureOffset("_MainTex", new Vector2(uOffset, yOffset));
 	}
 
 	private void SetMaterial(Material material)
 	{
 		_renderer.material = material;
-		float uOffset = 0.67f-(float)_column/3;
-		float vOffset = 0.67f-(float)_row/3;
-		_renderer.material.SetTextureScale("_MainTex", new Vector2(0.333f,0.333f));
-		_renderer.material.SetTextureOffset("_MainTex", new Vector2(uOffset, vOffset));
 	}
 }

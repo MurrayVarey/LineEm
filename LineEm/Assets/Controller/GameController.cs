@@ -25,7 +25,6 @@ public class GameController : MonoBehaviour {
 	
 	public void UpdateGridData(TileDisplay tile)
 	{
-		print("Tile clicked: Column " + tile._column   + " Row " + tile._row);
 		bool moveMade = _gridData.PlaceMove(tile._column, tile._row);
 		if(moveMade)
 		{
@@ -33,12 +32,10 @@ public class GameController : MonoBehaviour {
 			if(_gridData.IsWinningMove(tile._column, tile._row))
 			{
 				SceneManager.LoadScene("EndGame");
-				//print ("Winner!");
 			}
 			else if(_gridData.IsStalemate())
 			{
 				SceneManager.LoadScene("EndGame");
-				//print ("Draw");
 			}
 			else
 			{
