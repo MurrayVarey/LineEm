@@ -25,7 +25,6 @@ public class TileDisplay : MonoBehaviour
 		_renderer = GetComponent<Renderer> ();
 		SetMaterial(_idleMaterial);
 
-
 		_stateText = _stateDisplay.GetComponent<TextMesh>();
 		_stateText.text = "";
 	}
@@ -53,6 +52,16 @@ public class TileDisplay : MonoBehaviour
 	{
 		_column = column;
 		_row = row;
+	}
+
+	public void EnableRightLine(bool active)
+	{
+		transform.Find("RightLine").gameObject.SetActive(active);
+	}
+
+	public void EnableTopLine(bool active)
+	{
+		transform.Find("TopLine").gameObject.SetActive(active);
 	}
 
 	private void SetMaterial(Material material)

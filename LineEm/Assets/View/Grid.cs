@@ -24,9 +24,11 @@ public class Grid : MonoBehaviour
 				Vector3 tilePosition = new Vector3(CalculateTilePosition(column, _height), 0, CalculateTilePosition(row, _width));
 				GameObject tile = Instantiate(_tilePrefab, tilePosition, transform.rotation) as GameObject;
 				TileDisplay tileDisplay = tile.GetComponent<TileDisplay>();
-				//tileDisplay._column = column;
-				//tileDisplay._row = row;
 				tileDisplay.SetCoordinates(column, row);
+				// Don't display grid lines for the last column/row, so
+				// that we get that traditional noughts and crosses grid.
+				tileDisplay.EnableRightLine(column<_width-1);
+				tileDisplay.EnableTopLine(row<_height-1);
 			}
 		}
 	}
