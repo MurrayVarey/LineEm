@@ -29,6 +29,7 @@ public class GameController : MonoBehaviour {
 		if(moveMade)
 		{
 			tile.UpdateDisplay(_gridData._move);
+			tile.PlaySound();
 			if(_gridData.IsWinningMove(tile._column, tile._row))
 			{
 				SceneManager.LoadScene("EndGame");

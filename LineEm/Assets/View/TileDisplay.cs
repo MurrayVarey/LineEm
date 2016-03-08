@@ -12,6 +12,8 @@ public class TileDisplay : MonoBehaviour
 	public int _row;
 	public int _column;
 
+	public AudioClip _writingSound;
+
 	private Renderer _renderer;
 
 	void Awake ()
@@ -62,6 +64,13 @@ public class TileDisplay : MonoBehaviour
 	public void EnableTopLine(bool active)
 	{
 		transform.Find("TopLine").gameObject.SetActive(active);
+	}
+
+	public void PlaySound()
+	{
+		AudioSource audio = GetComponent<AudioSource>();
+		audio.clip = _writingSound;
+		audio.Play();
 	}
 
 	private void SetMaterial(Material material)
