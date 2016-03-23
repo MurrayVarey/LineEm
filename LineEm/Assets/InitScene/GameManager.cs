@@ -55,7 +55,6 @@ public class GameManager : MonoBehaviour {
 	public void SetPlayerCount(int playerCount)
 	{
 		_playerCount = playerCount;
-		print("Player Count: " + _playerCount);
 	}
 
 }

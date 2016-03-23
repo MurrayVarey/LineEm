@@ -46,7 +46,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Controller\EventManager.cs" />
-     <Compile Include="Assets\Controller\GameController.cs" />
+     <Compile Include="Assets\Controller\NoughtsAndCrossesController.cs" />
      <Compile Include="Assets\InitScene\GameManager.cs" />
      <Compile Include="Assets\Model\GridData.cs" />
      <Compile Include="Assets\Model\LineDefinition.cs" />

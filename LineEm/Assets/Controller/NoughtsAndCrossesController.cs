@@ -2,7 +2,7 @@
 using UnityEngine.SceneManagement;
 using System.Collections;
 
-public class GameController : MonoBehaviour {
+public class NoughtsAndCrossesController : MonoBehaviour {
 
 	public int _gridWidth = 3;
 	public int _gridHeight = 3;
