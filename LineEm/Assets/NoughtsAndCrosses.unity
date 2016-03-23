@@ -290,7 +290,7 @@ GameObject:
   - 114: {fileID: 1308833966}
   - 114: {fileID: 1308833968}
   m_Layer: 0
-  m_Name: _GameController
+  m_Name: _SceneController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

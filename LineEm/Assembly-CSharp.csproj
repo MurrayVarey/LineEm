@@ -47,10 +47,12 @@
   <ItemGroup>
      <Compile Include="Assets\Controller\EventManager.cs" />
      <Compile Include="Assets\Controller\GameController.cs" />
+     <Compile Include="Assets\InitScene\GameManager.cs" />
      <Compile Include="Assets\Model\GridData.cs" />
      <Compile Include="Assets\Model\LineDefinition.cs" />
      <Compile Include="Assets\View\Grid.cs" />
      <Compile Include="Assets\View\LoadOnClick.cs" />
+     <Compile Include="Assets\View\Menu Scripts\PlayerCountControl.cs" />
      <Compile Include="Assets\View\TileDisplay.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
