@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
-public class GridData 
+
+public class GridData : MonoBehaviour 
 {
 	private int _width;
 	private int _height;
@@ -13,25 +15,36 @@ public class GridData
 		nought,
 		cross 
 	}
-	public eTileState _move;
 	private eTileState[,] _tileStates;
+	public eTileState _move;
 
-	public GridData (int width, int height)
+	private bool _hasWinner;
+
+	void Awake ()
+	{
+		_tileStates = null;
+		_move = eTileState.empty;
+		_moveCount = 0;
+		_hasWinner = false;
+	}
+
+	public void SetSize(int width, int height)
 	{
 		_width = width;
 		_height = height;
 		_tileStates = new eTileState[width, height];
-		_move = eTileState.nought;
-		_moveCount = 0;
 	}
 
-	public bool PlaceMove(int column, int row)
+	public bool PlaceMove(int column, int row, int player)
 	{
 		Debug.Assert(IsValidTile(column, row));
 		if(IsValidTile(column, row) && IsEmptyTile(column, row))
 		{
+			_move = GetMove(player);
 			_tileStates[column, row] = _move;
+			Debug.Log("Column: " + column + " Row: " + row + " Player: " + player);
 			_moveCount++;
+			_hasWinner = IsWinningMove(column, row);
 			return true;
 		}
 		return false;
@@ -47,9 +60,9 @@ public class GridData
 		return _tileStates[column, row] == eTileState.empty;
 	}
 
-	public void UpdateMove()
+	public eTileState GetMove(int player)
 	{
-		_move = _move == eTileState.nought ? eTileState.cross : eTileState.nought;
+		return player == 0 ? eTileState.nought : eTileState.cross;
 	}
 
 	public bool IsWinningMove(int column, int row)
@@ -110,6 +123,11 @@ public class GridData
 			}
 		}
 		return true;
+	}
+
+	public bool HasWinner()
+	{
+		return _hasWinner;
 	}
 
 	public bool IsStalemate()

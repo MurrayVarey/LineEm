@@ -16,6 +16,8 @@ public class TileDisplay : MonoBehaviour
 
 	private Renderer _renderer;
 
+	private NoughtsAndCrossesController _controller;
+
 	void Awake ()
 	{
 		_row = -1;
@@ -24,6 +26,8 @@ public class TileDisplay : MonoBehaviour
 
 	void Start () 
 	{
+		_controller = GameObject.Find("_SceneController").GetComponent<NoughtsAndCrossesController>();
+
 		_renderer = GetComponent<Renderer> ();
 		SetMaterial(_idleMaterial);
 
@@ -37,6 +41,7 @@ public class TileDisplay : MonoBehaviour
 		if(Input.GetMouseButtonDown(0))
 		{
 			EventManager.OnTileClickedEvent(this);
+			//_controller.UpdateGridData(this);
 		}
 	}
 
@@ -75,6 +80,9 @@ public class TileDisplay : MonoBehaviour
 
 	private void SetMaterial(Material material)
 	{
-		_renderer.material = material;
+		if(material != null)
+		{
+			_renderer.material = material;
+		}
 	}
 }

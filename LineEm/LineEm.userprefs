@@ -1,18 +1,24 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\InitScene\GameManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Controller\NoughtsAndCrossesController.cs">
     <Files>
-      <File FileName="Assets\InitScene\GameManager.cs" Line="19" Column="26" />
-      <File FileName="Assets\View\TileDisplay.cs" Line="73" Column="16" />
-      <File FileName="Assets\Controller\GameController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Model\GridData.cs" Line="39" Column="1" />
+      <File FileName="Assets\Controller\NoughtsAndCrossesController.cs" Line="22" Column="56" />
+      <File FileName="Assets\Controller\GameManager.cs" Line="17" Column="2" />
+      <File FileName="Assets\View\TileDisplay.cs" Line="1" Column="1" />
       <File FileName="Assets\View\Grid.cs" Line="1" Column="1" />
       <File FileName="Assets\View\LoadOnClick.cs" Line="1" Column="1" />
-      <File FileName="Assets\Model\GridData.cs" Line="1" Column="1" />
+      <File FileName="Assets\View\Menu Scripts\PlayerCountControl.cs" Line="1" Column="1" />
+      <File FileName="Assets\Controller\IMoveInput.cs" Line="1" Column="1" />
+      <File FileName="Assets\Controller\EventManager.cs" Line="11" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="C:\Users\Public\Documents\Unity Projects\LineEm\Assets\Grid.cs" line="23" column="4" />
+      <Breakpoint file="C:\Users\murray varey.LOGICOM\Documents\GitHub\LineEm\LineEm\Assets\Controller\NoughtsAndCrossesController.cs" line="40" column="5" />
+      <Breakpoint file="C:\Users\murray varey.LOGICOM\Documents\GitHub\LineEm\LineEm\Assets\Model\GridData.cs" line="25" column="3" />
+      <Breakpoint file="C:\Users\murray varey.LOGICOM\Documents\GitHub\LineEm\LineEm\Assets\Model\GridData.cs" line="39" column="4" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
