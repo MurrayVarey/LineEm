@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour {
 
 	void Awake()
 	{
+		DontDestroyOnLoad(gameObject);
 		_turn = 0;
 		SetPlayerCount(2);
 	}
