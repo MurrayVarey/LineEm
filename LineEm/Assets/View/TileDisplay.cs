@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using NoughtsAndCrosses;
 
 public class TileDisplay : MonoBehaviour 
 {
@@ -50,9 +51,9 @@ public class TileDisplay : MonoBehaviour
 		SetMaterial(_idleMaterial);
 	}
 
-	public void UpdateDisplay(GridData.eTileState state)
+	public void UpdateDisplay(eState state)
 	{
-		_stateText.text = state == GridData.eTileState.nought ? "O" : "X" ;
+		_stateText.text = state == eState.nought ? "O" : "X" ;
 	}
 
 	public void SetCoordinates(int column, int row)

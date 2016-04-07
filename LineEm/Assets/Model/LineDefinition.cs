@@ -20,14 +20,11 @@ public class LineDefinition
 		_rowStep = rowStep;
 	}
 
-	public int GetTileRow(int tileIndex)
+	public Move GetMove(int tileIndex)
 	{
-		return _firstRow + (tileIndex * _rowStep);
-	}
-
-	public int GetTileColumn(int tileIndex)
-	{
-		return _firstColumn + (tileIndex * _columnStep);
+		int column = _firstColumn + (tileIndex * _columnStep);
+		int row = _firstRow + (tileIndex * _rowStep);
+		return new Move(column, row);
 	}
 }
 

@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using NoughtsAndCrosses;
+
 
 public class NoughtsAndCrossesController : MonoBehaviour {
 
@@ -17,8 +19,7 @@ public class NoughtsAndCrossesController : MonoBehaviour {
 
 	void Start () 
 	{
-		_gridData = GameObject.Find("_SceneController").GetComponent<GridData>();
-		_gridData.SetSize(_gridWidth, _gridHeight);
+		_gridData = new GridData(_gridWidth, _gridHeight);
 
 		_gridDisplay = GameObject.Find("Grid").GetComponent<Grid>();
 		_gridDisplay.CreateTiles(_gridWidth, _gridHeight);
@@ -32,10 +33,12 @@ public class NoughtsAndCrossesController : MonoBehaviour {
 	public void UpdateGridData(TileDisplay tile)
 	{
 		GameManager manager = GameManager.Instance();
-		bool moveMade = _gridData.PlaceMove(tile._column, tile._row, manager.GetTurn());
+		Move move = new Move(tile._column, tile._row);
+		eState moveState = GetPlayerState(manager.GetTurn());
+		bool moveMade = _gridData.PlaceMove(move, moveState);
 		if(moveMade)
 		{
-			tile.UpdateDisplay(_gridData._move);
+			tile.UpdateDisplay(moveState);
 			tile.PlaySound();
 			manager.UpdateTurn();
 			if(_gridData.HasWinner())
@@ -47,5 +50,10 @@ public class NoughtsAndCrossesController : MonoBehaviour {
 				SceneManager.LoadScene("EndGame");
 			}
 		}
+	}
+
+	public eState GetPlayerState(int player)
+	{
+		return player == 0 ? eState.nought : eState.cross;
 	}
 }

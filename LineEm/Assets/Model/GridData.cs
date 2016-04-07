@@ -2,139 +2,138 @@
 using System.Collections;
 using System;
 
-
-public class GridData : MonoBehaviour 
+namespace NoughtsAndCrosses
 {
-	private int _width;
-	private int _height;
-	private int _moveCount;
-
-	public enum eTileState
+	public enum eState
 	{
 		empty,
 		nought,
 		cross 
 	}
-	private eTileState[,] _tileStates;
-	public eTileState _move;
 
-	private bool _hasWinner;
-
-	void Awake ()
+	public class GridData
 	{
-		_tileStates = null;
-		_move = eTileState.empty;
-		_moveCount = 0;
-		_hasWinner = false;
-	}
+		private int _width;
+		private int _height;
+		private int _moveCount;
 
-	public void SetSize(int width, int height)
-	{
-		_width = width;
-		_height = height;
-		_tileStates = new eTileState[width, height];
-	}
 
-	public bool PlaceMove(int column, int row, int player)
-	{
-		Debug.Assert(IsValidTile(column, row));
-		if(IsValidTile(column, row) && IsEmptyTile(column, row))
+		private eState[,] _tileStates;
+		//public eTileState _move;
+
+		private bool _hasWinner;
+
+		public GridData(int width, int height)
 		{
-			_move = GetMove(player);
-			_tileStates[column, row] = _move;
-			Debug.Log("Column: " + column + " Row: " + row + " Player: " + player);
-			_moveCount++;
-			_hasWinner = IsWinningMove(column, row);
-			return true;
+			_tileStates = null;
+			//_move = eTileState.empty;
+			_moveCount = 0;
+			_hasWinner = false;
+			_width = width;
+			_height = height;
+			_tileStates = new eState[width, height];
 		}
-		return false;
-	}
 
-	private bool IsValidTile(int column, int row)
-	{
-		return column < _width && row < _height;
-	}
-
-	private bool IsEmptyTile(int column, int row)
-	{
-		return _tileStates[column, row] == eTileState.empty;
-	}
-
-	public eTileState GetMove(int player)
-	{
-		return player == 0 ? eTileState.nought : eTileState.cross;
-	}
-
-	public bool IsWinningMove(int column, int row)
-	{
-		return IsWinningRow(row) || IsWinningColumn(column) || IsWinningUpDiagonal(column, row) || IsWinningDownDiagonal(column, row) ;
-	}
-
-	private bool IsWinningRow(int row)
-	{
-		return IsWinningLine(new RowDefinition(row));
-	}
-
-	private bool IsWinningColumn(int column)
-	{
-		return IsWinningLine(new ColumnDefinition(column));
-	}
-
-	private bool IsWinningUpDiagonal(int column, int row)
-	{
-		if(IsUpDiagonalTile(column, row))
+		public bool PlaceMove(Move move, eState moveState)
 		{
-			return IsWinningLine(new UpDiagonalDefinition());
+			Debug.Assert(IsValidMove(move));
+			if(IsEmptyTile(move))
+			{
+				//_move = 
+				_tileStates[move._column, move._row] = moveState;
+				_moveCount++;
+				_hasWinner = IsWinningMove(move);
+				return true;
+			}
+			return false;
 		}
-		return false;
-	}
 
-	private bool IsUpDiagonalTile(int column, int row)
-	{
-		return column == row;
-	}
-
-	private bool IsWinningDownDiagonal(int column, int row)
-	{
-		if(IsDownDiagonalTile(column, row))
+		private bool IsValidMove(Move move)
 		{
-			return IsWinningLine(new DownDiagonalDefinition(_height-1));
+			return move._column < _width && move._row < _height;
 		}
-		return false;
-	}
 
-	private bool IsDownDiagonalTile(int column, int row)
-	{
-		return column == (_height - 1 - row);
-	}
-
-	private bool IsWinningLine(LineDefinition lineDefinition)
-	{
-		for(int tileCount = 0; tileCount < 3; ++tileCount)
+		private bool IsEmptyTile(Move move)
 		{
-			int row = lineDefinition.GetTileRow(tileCount);
-			int column = lineDefinition.GetTileColumn(tileCount);
+			return _tileStates[move._column, move._row] == eState.empty;
+		}
 
-			Debug.Assert(IsValidTile(column, row));
+		public bool IsWinningMove(Move move)
+		{
+			return IsWinningRow(move._row) || IsWinningColumn(move._column) || IsWinningUpDiagonal(move) || IsWinningDownDiagonal(move) ;
+		}
 
-			if(_tileStates[column, row] != _move)
+		private bool IsWinningRow(int row)
+		{
+			return IsWinningLine(new RowDefinition(row));
+		}
+
+		private bool IsWinningColumn(int column)
+		{
+			return IsWinningLine(new ColumnDefinition(column));
+		}
+
+		private bool IsWinningUpDiagonal(Move move)
+		{
+			if(IsUpDiagonalTile(move))
+			{
+				return IsWinningLine(new UpDiagonalDefinition());
+			}
+			return false;
+		}
+
+		private bool IsUpDiagonalTile(Move move)
+		{
+			return move._column == move._row;
+		}
+
+		private bool IsWinningDownDiagonal(Move move)
+		{
+			if(IsDownDiagonalTile(move))
+			{
+				return IsWinningLine(new DownDiagonalDefinition(_height-1));
+			}
+			return false;
+		}
+
+		private bool IsDownDiagonalTile(Move move)
+		{
+			return move._column == (_height - 1 - move._row);
+		}
+
+		private bool IsWinningLine(LineDefinition lineDefinition)
+		{
+			Move firstMove = lineDefinition.GetMove(0);
+			eState firstState = _tileStates[firstMove._column, firstMove._row];
+
+			if(firstState == eState.empty)
 			{
 				return false;
 			}
+
+			for(int tileCount = 1; tileCount < 3; ++tileCount)
+			{
+				Move move = lineDefinition.GetMove(tileCount);
+
+				if(_tileStates[move._column, move._row] != firstState)
+				{
+					return false;
+				}
+			}
+			return true;
 		}
-		return true;
-	}
 
-	public bool HasWinner()
-	{
-		return _hasWinner;
-	}
+		public bool HasWinner()
+		{
+			return _hasWinner;
+		}
 
-	public bool IsStalemate()
-	{
-		return _moveCount == _width * _height;
-	}
+		public bool IsStalemate()
+		{
+			return _moveCount == _width * _height;
+		}
 
+	}
 }
 
 

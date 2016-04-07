@@ -48,6 +48,7 @@
      <Compile Include="Assets\Controller\EventManager.cs" />
      <Compile Include="Assets\Controller\GameManager.cs" />
      <Compile Include="Assets\Controller\IMoveInput.cs" />
+     <Compile Include="Assets\Controller\Move.cs" />
      <Compile Include="Assets\Controller\NoughtsAndCrossesController.cs" />
      <Compile Include="Assets\Model\GridData.cs" />
      <Compile Include="Assets\Model\LineDefinition.cs" />
