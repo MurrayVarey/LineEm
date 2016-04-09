@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System.Collections.Generic;
 using NoughtsAndCrosses;
 
 
@@ -13,6 +14,8 @@ public class NoughtsAndCrossesController : MonoBehaviour {
 	private GridData _gridData;
 
 	private GameManager _gameManager;
+
+	private bool _makingCPUMove = false;
 
 	void Awake()
 	{
@@ -27,6 +30,19 @@ public class NoughtsAndCrossesController : MonoBehaviour {
 		_gridDisplay.CreateTiles(_gridWidth, _gridHeight);
 
 		_gameManager = GameManager.Instance();
+	}
+
+	void Update()
+	{
+		if(ExpectingCPUMove())
+		{
+			StartCoroutine(MakeCPUMove());
+		}
+	}
+
+	private bool ExpectingCPUMove()
+	{
+		return !_gameManager.IsPlayerControlledTurn() && !_gridData.GameOver() && !_makingCPUMove;
 	}
 
 	void OnDestroy()
@@ -69,5 +85,15 @@ public class NoughtsAndCrossesController : MonoBehaviour {
 	public eState GetPlayerState(int player)
 	{
 		return player == 0 ? eState.nought : eState.cross;
+	}
+
+	private IEnumerator MakeCPUMove()
+	{
+		_makingCPUMove = true;
+		yield return new WaitForSeconds(1);
+		List<Move> moves = _gridData.GetPossibleMoves();
+		int iMove = Random.Range(0, moves.Count);
+		MakeMove(moves[iMove]);
+		_makingCPUMove = false;
 	}
 }

@@ -85,7 +85,7 @@ public class TileDisplay : MonoBehaviour
 
 	private void SetMaterial(Material material)
 	{
-		if(material != null)
+		if(_renderer != null)
 		{
 			_renderer.material = material;
 		}

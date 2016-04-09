@@ -123,6 +123,11 @@ namespace NoughtsAndCrosses
 			return true;
 		}
 
+		public bool GameOver()
+		{
+			return HasWinner() || IsStalemate();
+		}
+
 		public bool HasWinner()
 		{
 			return _hasWinner;
@@ -133,7 +138,7 @@ namespace NoughtsAndCrosses
 			return _moveCount == _width * _height;
 		}
 
-		public List<Move> GetPossibleMoveList()
+		public List<Move> GetPossibleMoves()
 		{
 			List<Move> moves = new List<Move>();
 			for(int column = 0; column < _width; ++column)
