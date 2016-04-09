@@ -19,13 +19,13 @@ public class GameManager : MonoBehaviour {
 
 	private int _playerCount;
 
-	List<IMoveInput> _moveInputs = new List<IMoveInput>();
+	List<bool> _playerControlled = new List<bool>();
 
 	void Awake()
 	{
 		DontDestroyOnLoad(gameObject);
 		_turn = 0;
-		SetPlayerCount(2);
+		SetPlayerCount(1);
 	}
 
 	public void UpdateTurn()
@@ -41,8 +41,11 @@ public class GameManager : MonoBehaviour {
 	public void SetPlayerCount(int playerCount)
 	{
 		_playerCount = playerCount;
-		_moveInputs.Clear();
-		_moveInputs.Add(new PlayerInput());
+		// Player controlled = true; CPU controlled = false
+		_playerControlled.Clear();
+		_playerControlled.Add(true);
+		_playerControlled.Add(playerCount == 2);
+		/*_moveInputs.Add(new PlayerInput());
 		if(playerCount == 1)
 		{
 			_moveInputs.Add(new CPUInput());
@@ -50,12 +53,18 @@ public class GameManager : MonoBehaviour {
 		else
 		{
 			_moveInputs.Add(new PlayerInput());
-		}
+		}*/
 	}
 
-	public IMoveInput GetCurrentInput()
+	public bool IsPlayerControlledTurn()
+	{
+		return _playerControlled[_turn];
+	}
+
+	/*public IMoveInput GetCurrentInput()
 	{
 		return _moveInputs[_turn];
-	}
+	}*/
+
 
 }
