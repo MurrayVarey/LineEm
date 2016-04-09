@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System;
 
 namespace NoughtsAndCrosses
@@ -37,9 +38,8 @@ namespace NoughtsAndCrosses
 		public bool PlaceMove(Move move, eState moveState)
 		{
 			Debug.Assert(IsValidMove(move));
-			if(IsEmptyTile(move))
+			if(IsValidMove(move) && IsEmptyTile(move))
 			{
-				//_move = 
 				_tileStates[move._column, move._row] = moveState;
 				_moveCount++;
 				_hasWinner = IsWinningMove(move);
@@ -131,6 +131,23 @@ namespace NoughtsAndCrosses
 		public bool IsStalemate()
 		{
 			return _moveCount == _width * _height;
+		}
+
+		public List<Move> GetPossibleMoveList()
+		{
+			List<Move> moves = new List<Move>();
+			for(int column = 0; column < _width; ++column)
+			{
+				for(int row = 0; row < _height; ++row)
+				{
+					if(_tileStates[column, row] == eState.empty)
+					{
+						moves.Add(new Move(column, row));
+					}
+				}
+			}
+
+			return moves;
 		}
 
 	}

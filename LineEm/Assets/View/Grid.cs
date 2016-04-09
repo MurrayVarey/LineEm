@@ -9,10 +9,6 @@ public class Grid : MonoBehaviour
 	private int _width;
 	private int _height;
 
-	void Start () 
-	{
-	}
-
 	public void CreateTiles(int width, int height)
 	{
 		_width = width;
@@ -29,6 +25,7 @@ public class Grid : MonoBehaviour
 				// that we get that traditional noughts and crosses grid.
 				tileDisplay.EnableRightLine(column<_width-1);
 				tileDisplay.EnableTopLine(row<_height-1);
+				tile.name = CreateTileName(column, row);
 			}
 		}
 	}
@@ -39,9 +36,16 @@ public class Grid : MonoBehaviour
 		// Offset by half (assumes max tile value is odd for now).
 		return tile-((maxTiles-1)/2);
 	}
-	
-	void Update () 
+
+	private string CreateTileName(int column, int row)
 	{
-	
+		return "tile_" + column + "_" + row;
+	}
+
+	public TileDisplay GetTileDisplay(Move move)
+	{
+		string name = CreateTileName(move._column, move._row);
+		GameObject tile = GameObject.Find(name);
+		return tile.GetComponent<TileDisplay>();
 	}
 }

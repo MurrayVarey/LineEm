@@ -1,16 +1,18 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Controller\GameManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Controller\NoughtsAndCrossesController.cs">
     <Files>
-      <File FileName="Assets\Model\GridData.cs" Line="25" Column="8" />
-      <File FileName="Assets\Controller\NoughtsAndCrossesController.cs" Line="40" Column="1" />
+      <File FileName="Assets\Controller\NoughtsAndCrossesController.cs" Line="48" Column="4" />
+      <File FileName="Assets\Model\GridData.cs" Line="42" Column="5" />
       <File FileName="Assets\Controller\GameManager.cs" Line="25" Column="3" />
-      <File FileName="Assets\View\TileDisplay.cs" Line="82" Column="3" />
-      <File FileName="Assets\View\Grid.cs" Line="1" Column="1" />
-      <File FileName="Assets\View\LoadOnClick.cs" Line="7" Column="41" />
-      <File FileName="Assets\View\Menu Scripts\PlayerCountControl.cs" Line="9" Column="3" />
+      <File FileName="Assets\View\TileDisplay.cs" Line="1" Column="1" />
+      <File FileName="Assets\View\Grid.cs" Line="48" Column="18" />
+      <File FileName="Assets\View\LoadOnClick.cs" Line="1" Column="1" />
+      <File FileName="Assets\View\Menu Scripts\PlayerCountControl.cs" Line="1" Column="1" />
       <File FileName="Assets\Controller\IMoveInput.cs" Line="1" Column="1" />
-      <File FileName="Assets\Controller\EventManager.cs" Line="7" Column="52" />
+      <File FileName="Assets\Controller\EventManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Controller\Move.cs" Line="1" Column="1" />
+      <File FileName="Assets\Model\LineDefinition.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
