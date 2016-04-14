@@ -90,7 +90,7 @@ public class NoughtsAndCrossesController : MonoBehaviour {
 	private IEnumerator MakeCPUMove()
 	{
 		_makingCPUMove = true;
-		yield return new WaitForSeconds(1);
+		yield return new WaitForSeconds(0.5f);
 		List<Move> moves = _gridData.GetPossibleMoves();
 		int iMove = Random.Range(0, moves.Count);
 		MakeMove(moves[iMove]);
