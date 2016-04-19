@@ -53,15 +53,17 @@ public class NoughtsAndCrossesController : MonoBehaviour {
 		if(moveMade)
 		{
 			EventManager.OnMoveMadeEvent(move, moveState);
-			_gameManager.UpdateTurn();
 			if(_gridData.HasWinner())
 			{
-				SceneManager.LoadScene("EndGame");
+				EventManager.OnGameOverEvent(_gameManager.GetTurn());
+				//SceneManager.LoadScene("EndGame");
 			}
 			else if(_gridData.IsStalemate())
 			{
-				SceneManager.LoadScene("EndGame");
+				EventManager.OnGameOverEvent(-1);
+				//SceneManager.LoadScene("EndGame");
 			}
+			_gameManager.UpdateTurn();
 		}
 	}
 

@@ -11,4 +11,12 @@ public class EventManager : MonoBehaviour {
 	{
 		OnMoveMade(move, moveState);
 	}
+
+	public delegate void GameOverAction(int winningPlayer);
+	public static event GameOverAction OnGameOver;
+
+	public static void OnGameOverEvent(int winningPlayer)
+	{
+		OnGameOver(winningPlayer);
+	}
 }
