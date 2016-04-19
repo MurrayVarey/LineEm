@@ -44,7 +44,8 @@ public class TileDisplay : MonoBehaviour
 			GameManager gameManager = GameManager.Instance();
 			if(gameManager.IsPlayerControlledTurn())
 			{
-				EventManager.OnTileClickedEvent(this);
+				_controller.OnTileClicked(this);
+				//EventManager.OnTileClickedEvent(this);
 			}
 			//_controller.UpdateGridData(this);
 		}

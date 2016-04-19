@@ -17,11 +17,6 @@ public class NoughtsAndCrossesController : MonoBehaviour {
 
 	private bool _makingCPUMove = false;
 
-	void Awake()
-	{
-		EventManager.OnTileClicked += UpdateGridData;
-	}
-
 	void Start () 
 	{
 		_gridData = new GridData(_gridWidth, _gridHeight);
@@ -44,13 +39,8 @@ public class NoughtsAndCrossesController : MonoBehaviour {
 	{
 		return !_gameManager.IsPlayerControlledTurn() && !_gridData.GameOver() && !_makingCPUMove;
 	}
-
-	void OnDestroy()
-	{
-		EventManager.OnTileClicked -= UpdateGridData;
-	}
 	
-	public void UpdateGridData(TileDisplay tile)
+	public void OnTileClicked(TileDisplay tile)
 	{
 		Move move = new Move(tile._column, tile._row);
 		MakeMove(move);
@@ -62,7 +52,7 @@ public class NoughtsAndCrossesController : MonoBehaviour {
 		bool moveMade = _gridData.PlaceMove(move, moveState);
 		if(moveMade)
 		{
-			UpdateDisplay(move, moveState);
+			EventManager.OnMoveMadeEvent(move, moveState);
 			_gameManager.UpdateTurn();
 			if(_gridData.HasWinner())
 			{
@@ -73,13 +63,6 @@ public class NoughtsAndCrossesController : MonoBehaviour {
 				SceneManager.LoadScene("EndGame");
 			}
 		}
-	}
-
-	private void UpdateDisplay(Move move, eState moveState)
-	{
-		TileDisplay tile = _gridDisplay.GetTileDisplay(move);
-		tile.UpdateDisplay(moveState);
-		tile.PlaySound();
 	}
 
 	public eState GetPlayerState(int player)

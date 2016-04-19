@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using NoughtsAndCrosses;
 
 public class Grid : MonoBehaviour 
 {
@@ -8,6 +9,17 @@ public class Grid : MonoBehaviour
 
 	private int _width;
 	private int _height;
+
+	void Awake()
+	{
+		//EventManager.OnTileClicked += UpdateGridData;
+		EventManager.OnMoveMade += UpdateDisplay;
+	}
+
+	void OnDestroy()
+	{
+		EventManager.OnMoveMade -= UpdateDisplay;
+	}
 
 	public void CreateTiles(int width, int height)
 	{
@@ -42,7 +54,14 @@ public class Grid : MonoBehaviour
 		return "tile_" + column + "_" + row;
 	}
 
-	public TileDisplay GetTileDisplay(Move move)
+	public void UpdateDisplay(Move move, eState moveState)
+	{
+		TileDisplay tile = GetTileDisplay(move);
+		tile.UpdateDisplay(moveState);
+		tile.PlaySound();
+	}
+
+	private TileDisplay GetTileDisplay(Move move)
 	{
 		string name = CreateTileName(move._column, move._row);
 		GameObject tile = GameObject.Find(name);
