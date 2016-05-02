@@ -38,6 +38,11 @@ public class GameManager : MonoBehaviour {
 		return _turn;
 	}
 
+	public int GetPlayerCount()
+	{
+		return _playerCount;
+	}
+
 	public void SetPlayerCount(int playerCount)
 	{
 		_playerCount = playerCount;
