@@ -16,8 +16,6 @@ namespace NoughtsAndCrosses
 	{
 		private int _width;
 		private int _height;
-		private int _moveCount;
-
 
 		private eState[,] _tileStates;
 		//public eTileState _move;
@@ -28,12 +26,38 @@ namespace NoughtsAndCrosses
 		{
 			_tileStates = null;
 			//_move = eTileState.empty;
-			_moveCount = 0;
 			_hasWinner = false;
 			_width = width;
 			_height = height;
 			_tileStates = new eState[width, height];
+
+			// For testing minimax
+
+			// Next, take out moves
+			//_tileStates[0,0] = eState.nought; // Move 1
+			//_tileStates[0,1] = eState.cross; // Move 4
+			//_tileStates[0,2] = eState.nought; // Move 3
+
+			//_tileStates[1,0] = eState.nought; // Move 7
+			//_tileStates[1,1] = eState.cross; // Move 2
+			//_tileStates[1,2] = eState.cross; // Move 6
+
+			//_tileStates[2,0] = eState.cross; // Move 8
+			//_tileStates[2,1] = eState.nought; // Move 5
+			//tileStates[2,2] = eState.nought; // Move 9
 		}
+
+		public GridData(eState[,] tileStates)
+		{
+			_tileStates = (eState[,])tileStates.Clone();
+			_hasWinner = false;
+			_width = tileStates.GetLength(0);
+			_height = tileStates.GetLength(1);
+		}
+
+		public int GetWidth() { return _width; }
+		public int GetHeight() { return _height; }
+		public eState GetTileState(Move move) { return _tileStates[move._column, move._row]; }
 
 		public bool PlaceMove(Move move, eState moveState)
 		{
@@ -41,11 +65,15 @@ namespace NoughtsAndCrosses
 			if(IsValidMove(move) && IsEmptyTile(move))
 			{
 				_tileStates[move._column, move._row] = moveState;
-				_moveCount++;
 				_hasWinner = IsWinningMove(move);
 				return true;
 			}
 			return false;
+		}
+
+		public GridData Copy()
+		{
+			return new GridData(_tileStates);
 		}
 
 		private bool IsValidMove(Move move)
@@ -135,7 +163,17 @@ namespace NoughtsAndCrosses
 
 		public bool IsStalemate()
 		{
-			return _moveCount == _width * _height;
+			for(int column = 0; column < _width; ++column)
+			{
+				for(int row = 0; row < _height; ++row)
+				{
+					if(_tileStates[column, row] == eState.empty)
+					{
+						return false;
+					}
+				}
+			}
+			return true;
 		}
 
 		public List<Move> GetPossibleMoves()
