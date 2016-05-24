@@ -79,8 +79,11 @@ public class NoughtsAndCrossesController : MonoBehaviour {
 
 	private Move FindCPUMove()
 	{
-		Move cpuMove = null;
 		int minRating = -20;
+
+		// To make the CPU seem less predictable, we'll allow it to
+		// randomly pick from any one of the best moves
+		List<Move> bestMoves = new List<Move>();
 
 		List<Move> moves = _gridData.GetPossibleMoves();
 		foreach(Move move in moves)
@@ -88,11 +91,18 @@ public class NoughtsAndCrossesController : MonoBehaviour {
 			int moveRating = MiniMax(move, _gridData.Copy(), _gameManager.GetTurn(), true);
 			if(moveRating > minRating)
 			{
-				cpuMove = move;
+				bestMoves.Clear();
+				bestMoves.Add(move);
 				minRating = moveRating;
 			}
+			else if(moveRating == minRating)
+			{
+				bestMoves.Add(move);
+			}
 		}
-		return cpuMove;
+
+		int iMove = Random.Range(0, bestMoves.Count);
+		return bestMoves[iMove];
 	}
 
 	private int MiniMax(Move move, GridData gridData, int turn, bool isMax)
