@@ -18,33 +18,16 @@ namespace NoughtsAndCrosses
 		private int _height;
 
 		private eState[,] _tileStates;
-		//public eTileState _move;
 
 		private bool _hasWinner;
 
 		public GridData(int width, int height)
 		{
 			_tileStates = null;
-			//_move = eTileState.empty;
 			_hasWinner = false;
 			_width = width;
 			_height = height;
 			_tileStates = new eState[width, height];
-
-			// For testing minimax
-
-			// Next, take out moves
-			//_tileStates[0,0] = eState.nought; // Move 1
-			//_tileStates[0,1] = eState.cross; // Move 4
-			//_tileStates[0,2] = eState.nought; // Move 3
-
-			//_tileStates[1,0] = eState.nought; // Move 7
-			//_tileStates[1,1] = eState.cross; // Move 2
-			//_tileStates[1,2] = eState.cross; // Move 6
-
-			//_tileStates[2,0] = eState.cross; // Move 8
-			//_tileStates[2,1] = eState.nought; // Move 5
-			//tileStates[2,2] = eState.nought; // Move 9
 		}
 
 		public GridData(eState[,] tileStates)
