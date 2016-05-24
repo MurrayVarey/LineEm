@@ -299,6 +299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _idleMaterial: {fileID: 2100000, guid: ef3f6e69cd825ed46bc9aebaf725009d, type: 2}
   _activeMaterial: {fileID: 2100000, guid: fca2fae4f2d05344380fba315838c4cb, type: 2}
+  _winningMaterial: {fileID: 2100000, guid: 13ac1d465aa7ecc4cb2a565990c082e5, type: 2}
   _stateDisplay: {fileID: 194744}
   _stateText: {fileID: 0}
   _row: 0
@@ -405,6 +406,10 @@ Prefab:
       propertyPath: _writingSound
       value: 
       objectReference: {fileID: 8300000, guid: aa2025dfad915fd40af06394ef97748f, type: 3}
+    - target: {fileID: 0}
+      propertyPath: _winningMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 13ac1d465aa7ecc4cb2a565990c082e5, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 127218}
