@@ -14,11 +14,13 @@ public class Grid : MonoBehaviour
 	{
 		//EventManager.OnTileClicked += UpdateGridData;
 		EventManager.OnMoveMade += UpdateDisplay;
+		EventManager.OnGameOver += DrawWinningLine;
 	}
 
 	void OnDestroy()
 	{
 		EventManager.OnMoveMade -= UpdateDisplay;
+		EventManager.OnGameOver -= DrawWinningLine;
 	}
 
 	//public void CreateTiles(int width, int height)
@@ -69,5 +71,18 @@ public class Grid : MonoBehaviour
 		string name = CreateTileName(move._column, move._row);
 		GameObject tile = GameObject.Find(name);
 		return tile.GetComponent<TileDisplay>();
+	}
+
+	public void DrawWinningLine(int winner, LineDefinition winningLine)
+	{
+		if(winningLine != null)
+		{
+			for(int tileCount = 0; tileCount < 3; ++tileCount)
+			{
+				Move move = winningLine.GetMove(tileCount);
+				TileDisplay tileDisplay = GetTileDisplay(move);
+				tileDisplay.SetWinningMaterial();
+			}
+		}
 	}
 }

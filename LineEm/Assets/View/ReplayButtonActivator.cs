@@ -28,7 +28,7 @@ public class ReplayButtonActivator : MonoBehaviour {
 		//buttonScript.interactable = false;
 	}
 
-	public void ActivateReplayButton(int winner)
+	public void ActivateReplayButton(int winner, LineDefinition winningLine)
 	{
 		_replayButton.interactable = true;
 		_replayText.enabled = true;

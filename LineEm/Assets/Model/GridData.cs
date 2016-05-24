@@ -19,12 +19,12 @@ namespace NoughtsAndCrosses
 
 		private eState[,] _tileStates;
 
-		private bool _hasWinner;
+		private LineDefinition _winningLine;
 
 		public GridData(int width, int height)
 		{
 			_tileStates = null;
-			_hasWinner = false;
+			_winningLine = null;
 			_width = width;
 			_height = height;
 			_tileStates = new eState[width, height];
@@ -33,7 +33,7 @@ namespace NoughtsAndCrosses
 		public GridData(eState[,] tileStates)
 		{
 			_tileStates = (eState[,])tileStates.Clone();
-			_hasWinner = false;
+			_winningLine = null;
 			_width = tileStates.GetLength(0);
 			_height = tileStates.GetLength(1);
 		}
@@ -48,7 +48,7 @@ namespace NoughtsAndCrosses
 			if(IsValidMove(move) && IsEmptyTile(move))
 			{
 				_tileStates[move._column, move._row] = moveState;
-				_hasWinner = IsWinningMove(move);
+				FindWinningLine(move);
 				return true;
 			}
 			return false;
@@ -69,42 +69,37 @@ namespace NoughtsAndCrosses
 			return _tileStates[move._column, move._row] == eState.empty;
 		}
 
-		public bool IsWinningMove(Move move)
+		private void FindWinningLine(Move move)
 		{
-			return IsWinningRow(move._row) || IsWinningColumn(move._column) || IsWinningUpDiagonal(move) || IsWinningDownDiagonal(move) ;
+			List<LineDefinition> lines = GetLines(move);
+			foreach(LineDefinition line in lines)
+			{
+				if(IsWinningLine(line))
+				{
+					_winningLine = line;
+				}
+			}
 		}
 
-		private bool IsWinningRow(int row)
+		private List<LineDefinition> GetLines(Move move)
 		{
-			return IsWinningLine(new RowDefinition(row));
-		}
-
-		private bool IsWinningColumn(int column)
-		{
-			return IsWinningLine(new ColumnDefinition(column));
-		}
-
-		private bool IsWinningUpDiagonal(Move move)
-		{
+			List<LineDefinition> lines = new List<LineDefinition>();
+			lines.Add(new RowDefinition(move._row));
+			lines.Add(new ColumnDefinition(move._column));
 			if(IsUpDiagonalTile(move))
 			{
-				return IsWinningLine(new UpDiagonalDefinition());
+				lines.Add(new UpDiagonalDefinition());
 			}
-			return false;
+			if(IsDownDiagonalTile(move))
+			{
+				lines.Add(new DownDiagonalDefinition(_height - 1));
+			}
+			return lines;
 		}
 
 		private bool IsUpDiagonalTile(Move move)
 		{
 			return move._column == move._row;
-		}
-
-		private bool IsWinningDownDiagonal(Move move)
-		{
-			if(IsDownDiagonalTile(move))
-			{
-				return IsWinningLine(new DownDiagonalDefinition(_height-1));
-			}
-			return false;
 		}
 
 		private bool IsDownDiagonalTile(Move move)
@@ -141,7 +136,12 @@ namespace NoughtsAndCrosses
 
 		public bool HasWinner()
 		{
-			return _hasWinner;
+			return _winningLine != null;
+		}
+
+		public LineDefinition GetWinningLine()
+		{
+			return _winningLine;
 		}
 
 		public bool IsStalemate()

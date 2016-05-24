@@ -6,6 +6,7 @@ public class TileDisplay : MonoBehaviour
 {
 	public Material _idleMaterial;
 	public Material _activeMaterial;
+	public Material _winningMaterial;
 
 	public GameObject _stateDisplay;
 	public TextMesh _stateText;
@@ -18,6 +19,8 @@ public class TileDisplay : MonoBehaviour
 	private Renderer _renderer;
 
 	private NoughtsAndCrossesController _controller;
+
+	private bool _isWinningTile = false;
 
 	void Awake ()
 	{
@@ -86,9 +89,15 @@ public class TileDisplay : MonoBehaviour
 		audio.Play();
 	}
 
+	public void SetWinningMaterial()
+	{
+		SetMaterial(_winningMaterial);
+		_isWinningTile = true;
+	}
+
 	private void SetMaterial(Material material)
 	{
-		if(_renderer != null)
+		if(_renderer != null && !_isWinningTile)
 		{
 			_renderer.material = material;
 		}
