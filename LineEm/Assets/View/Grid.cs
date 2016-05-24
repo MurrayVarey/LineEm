@@ -21,10 +21,11 @@ public class Grid : MonoBehaviour
 		EventManager.OnMoveMade -= UpdateDisplay;
 	}
 
-	public void CreateTiles(int width, int height)
+	//public void CreateTiles(int width, int height)
+	public void CreateTiles(GridData gridData)
 	{
-		_width = width;
-		_height = height;
+		_width = gridData.GetWidth();
+		_height = gridData.GetHeight();
 		for(int column=0; column<_width; ++column)
 		{
 			for(int row=0; row<_height; ++row)
@@ -37,6 +38,8 @@ public class Grid : MonoBehaviour
 				// that we get that traditional noughts and crosses grid.
 				tileDisplay.EnableRightLine(column<_width-1);
 				tileDisplay.EnableTopLine(row<_height-1);
+				eState state = gridData.GetTileState(new Move(column, row));
+				tileDisplay.UpdateDisplay(state);
 				tile.name = CreateTileName(column, row);
 			}
 		}

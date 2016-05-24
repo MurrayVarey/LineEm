@@ -23,17 +23,17 @@ public class TileDisplay : MonoBehaviour
 	{
 		_row = -1;
 		_column = -1;
-	}
-
-	void Start () 
-	{
-		_controller = GameObject.Find("_SceneController").GetComponent<NoughtsAndCrossesController>();
 
 		_renderer = GetComponent<Renderer> ();
 		SetMaterial(_idleMaterial);
 
 		_stateText = _stateDisplay.GetComponent<TextMesh>();
 		_stateText.text = "";
+	}
+
+	void Start () 
+	{
+		_controller = GameObject.Find("_SceneController").GetComponent<NoughtsAndCrossesController>();
 	}
 
 	void OnMouseOver()
@@ -56,6 +56,10 @@ public class TileDisplay : MonoBehaviour
 
 	public void UpdateDisplay(eState state)
 	{
+		if(state == eState.empty)
+		{
+			return;
+		}
 		_stateText.text = state == eState.nought ? "O" : "X" ;
 	}
 
