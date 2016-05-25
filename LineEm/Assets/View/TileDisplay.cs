@@ -41,7 +41,11 @@ public class TileDisplay : MonoBehaviour
 
 	void OnMouseOver()
 	{
-		SetMaterial(_activeMaterial);
+		if(!_isWinningTile)
+		{
+			SetMaterial(_activeMaterial);
+		}
+
 		if(Input.GetMouseButtonDown(0))
 		{
 			GameManager gameManager = GameManager.Instance();
@@ -54,7 +58,10 @@ public class TileDisplay : MonoBehaviour
 
 	void OnMouseExit()
 	{
-		SetMaterial(_idleMaterial);
+		if(!_isWinningTile)
+		{
+			SetMaterial(_idleMaterial);
+		}
 	}
 
 	public void UpdateDisplay(eState state)
@@ -89,15 +96,21 @@ public class TileDisplay : MonoBehaviour
 		audio.Play();
 	}
 
-	public void SetWinningMaterial()
+	public void SetWinningTile(float delayTime)
 	{
-		SetMaterial(_winningMaterial);
 		_isWinningTile = true;
+		StartCoroutine(FlashWinningMaterial(delayTime));
+	}
+
+	private IEnumerator FlashWinningMaterial(float delayTime)
+	{
+		yield return new WaitForSeconds(delayTime);
+		SetMaterial(_winningMaterial);
 	}
 
 	private void SetMaterial(Material material)
 	{
-		if(_renderer != null && !_isWinningTile)
+		if(_renderer != null)
 		{
 			_renderer.material = material;
 		}

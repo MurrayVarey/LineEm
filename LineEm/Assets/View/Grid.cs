@@ -81,7 +81,7 @@ public class Grid : MonoBehaviour
 			{
 				Move move = winningLine.GetMove(tileCount);
 				TileDisplay tileDisplay = GetTileDisplay(move);
-				tileDisplay.SetWinningMaterial();
+				tileDisplay.SetWinningTile((float)tileCount * 0.2f);
 			}
 		}
 	}
