@@ -32,8 +32,8 @@ public class Grid : MonoBehaviour
 		{
 			for(int row=0; row<_height; ++row)
 			{
-				Vector3 tilePosition = new Vector3(CalculateTilePosition(column, _height), 0, CalculateTilePosition(row, _width));
-				GameObject tile = Instantiate(_tilePrefab, tilePosition, transform.rotation) as GameObject;
+				Vector3 tilePosition = new Vector3(CalculateTilePosition(column, _height), CalculateTilePosition(row, _width), 0.5f);
+				GameObject tile = Instantiate(_tilePrefab, tilePosition, Quaternion.Euler(-90, 0, 0)) as GameObject;
 				TileDisplay tileDisplay = tile.GetComponent<TileDisplay>();
 				tileDisplay.SetCoordinates(column, row);
 				// Don't display grid lines for the last column/row, so
@@ -47,11 +47,11 @@ public class Grid : MonoBehaviour
 		}
 	}
 
-	private int CalculateTilePosition(int tile, int maxTiles)
+	private float CalculateTilePosition(int tile, int maxTiles)
 	{
 		// The middle tile should be at (0, 0).
 		// Offset by half (assumes max tile value is odd for now).
-		return tile-((maxTiles-1)/2);
+		return 0.15f * (tile-((maxTiles-1)/2));
 	}
 
 	private string CreateTileName(int column, int row)
