@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour {
 	private int _turn;
 
 	private int _playerCount;
+	private int[] _scores;
 
 	List<bool> _playerControlled = new List<bool>();
 
@@ -26,6 +28,13 @@ public class GameManager : MonoBehaviour {
 		DontDestroyOnLoad(gameObject);
 		_turn = 0;
 		SetPlayerCount(1);
+		_scores = new int[2];
+		EventManager.OnGameOver += IncrementScore;
+	}
+
+	void OnDestroy()
+	{
+		EventManager.OnGameOver -= IncrementScore;
 	}
 
 	public void UpdateTurn()
@@ -64,6 +73,24 @@ public class GameManager : MonoBehaviour {
 	public bool IsPlayerControlledTurn()
 	{
 		return _playerControlled[_turn];
+	}
+
+	public void IncrementScore(int winner, LineDefinition winningLine)
+	{
+		if(winner > -1)
+		{
+			++_scores[winner];
+		}
+	}
+
+	public void RefreshScores()
+	{
+		Array.Clear(_scores, 0, 2);
+	}
+
+	public int GetScore(int player)
+	{
+		return _scores[player];
 	}
 
 	/*public IMoveInput GetCurrentInput()

@@ -21,6 +21,7 @@ public class PlayerCountDropdown : MonoBehaviour {
 		if(dropdownCount != _gameManager.GetPlayerCount())
 		{
 			_gameManager.SetPlayerCount(dropdownCount);
+			_gameManager.RefreshScores();
 			SceneManager.LoadScene(sceneName);
 		}
 	}
