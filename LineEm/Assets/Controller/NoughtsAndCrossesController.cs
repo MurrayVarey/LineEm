@@ -26,6 +26,16 @@ public class NoughtsAndCrossesController : MonoBehaviour {
 		_gridDisplay.CreateTiles(_gridData);
 	}
 
+	void Awake()
+	{
+		EventManager.OnGameWon += DrawWinningLine;
+	}
+
+	void OnDestroy()
+	{
+		EventManager.OnGameWon -= DrawWinningLine;
+	}
+
 	void Update()
 	{
 		if(ExpectingCPUMove())
@@ -47,20 +57,29 @@ public class NoughtsAndCrossesController : MonoBehaviour {
 
 	private void MakeMove(Move move)
 	{
-		eState moveState = GetPlayerState(_gameManager.GetTurn());
+		int currentTurn = _gameManager.GetTurn();
+		eState moveState = GetPlayerState(currentTurn);
 		bool moveMade = _gridData.PlaceMove(move, moveState);
 		if(moveMade)
 		{
+			_gameManager.UpdateTurn();
 			EventManager.OnMoveMadeEvent(move, moveState);
 			if(_gridData.HasWinner())
 			{
-				EventManager.OnGameOverEvent(_gameManager.GetTurn(), _gridData.GetWinningLine());
+				EventManager.OnGameWonEvent(currentTurn, _gridData.GetWinningLine());
 			}
 			else if(_gridData.IsStalemate())
 			{
-				EventManager.OnGameOverEvent(-1, null);
+				_gameManager.ResetScene();
 			}
-			_gameManager.UpdateTurn();
+		}
+	}
+
+	public void DrawWinningLine(int winner, LineDefinition winningLine)
+	{
+		if(winningLine != null)
+		{
+			StartCoroutine(_gridDisplay.FlashWinningTiles(winningLine, _gameManager.ResetScene));
 		}
 	}
 

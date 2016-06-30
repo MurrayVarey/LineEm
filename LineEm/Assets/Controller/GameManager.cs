@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -23,18 +24,20 @@ public class GameManager : MonoBehaviour {
 
 	List<bool> _playerControlled = new List<bool>();
 
+	public string _sceneName;
+
 	void Awake()
 	{
 		DontDestroyOnLoad(gameObject);
 		_turn = 0;
 		SetPlayerCount(1);
 		_scores = new int[2];
-		EventManager.OnGameOver += IncrementScore;
+		EventManager.OnGameWon += IncrementScore;
 	}
 
 	void OnDestroy()
 	{
-		EventManager.OnGameOver -= IncrementScore;
+		EventManager.OnGameWon -= IncrementScore;
 	}
 
 	public void UpdateTurn()
@@ -72,6 +75,11 @@ public class GameManager : MonoBehaviour {
 		{
 			++_scores[winner];
 		}
+	}
+
+	public void ResetScene()
+	{
+		SceneManager.LoadScene("NoughtsAndCrosses");
 	}
 
 	public void RefreshScores()

@@ -14,13 +14,11 @@ public class Grid : MonoBehaviour
 	{
 		//EventManager.OnTileClicked += UpdateGridData;
 		EventManager.OnMoveMade += UpdateDisplay;
-		EventManager.OnGameOver += DrawWinningLine;
 	}
 
 	void OnDestroy()
 	{
 		EventManager.OnMoveMade -= UpdateDisplay;
-		EventManager.OnGameOver -= DrawWinningLine;
 	}
 
 	//public void CreateTiles(int width, int height)
@@ -73,15 +71,9 @@ public class Grid : MonoBehaviour
 		return tile.GetComponent<TileDisplay>();
 	}
 
-	public void DrawWinningLine(int winner, LineDefinition winningLine)
-	{
-		if(winningLine != null)
-		{
-			StartCoroutine(FlashWinningTiles(winningLine));
-		}
-	}
+	public delegate void PostFlashRoutine();
 
-	private IEnumerator FlashWinningTiles(LineDefinition winningLine)
+	public IEnumerator FlashWinningTiles(LineDefinition winningLine, PostFlashRoutine postFlashRoutine)
 	{
 		for(int flashCount = 0; flashCount < 6; ++flashCount)
 		{
@@ -95,5 +87,6 @@ public class Grid : MonoBehaviour
 				tileDisplay.SetWinningFlashMaterial(flashOn);
 			}
 		}
+		postFlashRoutine();
 	}
 }

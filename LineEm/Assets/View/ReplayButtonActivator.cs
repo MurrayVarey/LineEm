@@ -9,12 +9,12 @@ public class ReplayButtonActivator : MonoBehaviour {
 
 	void Awake()
 	{
-		EventManager.OnGameOver += ActivateReplayButton;
+		//EventManager.OnGameWon += ActivateReplayButton;
 	}
 
 	void OnDestroy()
 	{
-		EventManager.OnGameOver -= ActivateReplayButton;
+		//EventManager.OnGameWon -= ActivateReplayButton;
 	}
 
 	void Start()
