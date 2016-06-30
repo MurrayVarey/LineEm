@@ -96,16 +96,11 @@ public class TileDisplay : MonoBehaviour
 		audio.Play();
 	}
 
-	public void SetWinningTile(float delayTime)
+	public void SetWinningFlashMaterial(bool flashOn)
 	{
 		_isWinningTile = true;
-		StartCoroutine(FlashWinningMaterial(delayTime));
-	}
-
-	private IEnumerator FlashWinningMaterial(float delayTime)
-	{
-		yield return new WaitForSeconds(delayTime);
-		SetMaterial(_winningMaterial);
+		Material flashMaterial = flashOn ? _winningMaterial : _idleMaterial;
+		SetMaterial(flashMaterial);
 	}
 
 	private void SetMaterial(Material material)

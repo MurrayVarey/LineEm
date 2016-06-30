@@ -59,15 +59,6 @@ public class GameManager : MonoBehaviour {
 		_playerControlled.Clear();
 		_playerControlled.Add(true);
 		_playerControlled.Add(playerCount == 2);
-		/*_moveInputs.Add(new PlayerInput());
-		if(playerCount == 1)
-		{
-			_moveInputs.Add(new CPUInput());
-		}
-		else
-		{
-			_moveInputs.Add(new PlayerInput());
-		}*/
 	}
 
 	public bool IsPlayerControlledTurn()

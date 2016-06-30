@@ -77,11 +77,22 @@ public class Grid : MonoBehaviour
 	{
 		if(winningLine != null)
 		{
+			StartCoroutine(FlashWinningTiles(winningLine));
+		}
+	}
+
+	private IEnumerator FlashWinningTiles(LineDefinition winningLine)
+	{
+		for(int flashCount = 0; flashCount < 6; ++flashCount)
+		{
+			yield return new WaitForSeconds(0.15f);
+			bool flashOn = flashCount%2 == 0;
+
 			for(int tileCount = 0; tileCount < 3; ++tileCount)
 			{
-				Move move = winningLine.GetMove(tileCount);
-				TileDisplay tileDisplay = GetTileDisplay(move);
-				tileDisplay.SetWinningTile((float)tileCount * 0.2f);
+				Move tilePosition = winningLine.GetMove(tileCount);
+				TileDisplay tileDisplay = GetTileDisplay(tilePosition);
+				tileDisplay.SetWinningFlashMaterial(flashOn);
 			}
 		}
 	}
