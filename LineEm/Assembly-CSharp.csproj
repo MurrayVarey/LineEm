@@ -56,7 +56,6 @@
      <Compile Include="Assets\View\LoadOnClick.cs" />
      <Compile Include="Assets\View\Menu Scripts\PlayerCountControl.cs" />
      <Compile Include="Assets\View\PlayerCountDropdown.cs" />
-     <Compile Include="Assets\View\ReplayButtonActivator.cs" />
      <Compile Include="Assets\View\ScoreDisplay.cs" />
      <Compile Include="Assets\View\TileDisplay.cs" />
  <Reference Include="UnityEngine.UI">
