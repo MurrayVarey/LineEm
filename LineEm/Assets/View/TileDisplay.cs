@@ -91,9 +91,13 @@ public class TileDisplay : MonoBehaviour
 
 	public void PlaySound()
 	{
-		AudioSource audio = GetComponent<AudioSource>();
-		audio.clip = _writingSound;
-		audio.Play();
+		GameManager gameManager = GameManager.Instance();
+		if(gameManager.IsSoundOn())
+		{
+			AudioSource audio = GetComponent<AudioSource>();
+			audio.clip = _writingSound;
+			audio.Play();
+		}
 	}
 
 	public void SetWinningFlashMaterial(bool flashOn)

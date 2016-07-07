@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour {
 	List<bool> _playerControlled = new List<bool>();
 
 	public string _sceneName;
+	private bool _soundOn;
 
 	void Awake()
 	{
@@ -33,6 +34,7 @@ public class GameManager : MonoBehaviour {
 		SetPlayerCount(1);
 		_scores = new int[2];
 		EventManager.OnGameWon += IncrementScore;
+		_soundOn = true;
 	}
 
 	void OnDestroy()
@@ -92,10 +94,14 @@ public class GameManager : MonoBehaviour {
 		return _scores[player];
 	}
 
-	/*public IMoveInput GetCurrentInput()
+	public bool IsSoundOn()
 	{
-		return _moveInputs[_turn];
-	}*/
+		return _soundOn;
+	}
 
+	public void ToggleSound()
+	{
+		_soundOn = !_soundOn;
+	}
 
 }
