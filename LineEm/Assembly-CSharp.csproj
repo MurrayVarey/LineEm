@@ -55,7 +55,7 @@
      <Compile Include="Assets\View\Grid.cs" />
      <Compile Include="Assets\View\LoadOnClick.cs" />
      <Compile Include="Assets\View\Menu Scripts\PlayerCountControl.cs" />
-     <Compile Include="Assets\View\PlayerCountDropdown.cs" />
+     <Compile Include="Assets\View\PlayerToggler.cs" />
      <Compile Include="Assets\View\ScoreDisplay.cs" />
      <Compile Include="Assets\View\SoundToggler.cs" />
      <Compile Include="Assets\View\TileDisplay.cs" />

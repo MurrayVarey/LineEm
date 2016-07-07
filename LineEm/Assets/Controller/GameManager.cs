@@ -57,7 +57,12 @@ public class GameManager : MonoBehaviour {
 		return _playerCount;
 	}
 
-	public void SetPlayerCount(int playerCount)
+	public void TogglePlayerCount()
+	{
+		SetPlayerCount(_playerCount == 1 ? 2 : 1);
+	}
+
+	private void SetPlayerCount(int playerCount)
 	{
 		_playerCount = playerCount;
 		// Player controlled = true; CPU controlled = false
