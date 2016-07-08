@@ -2,6 +2,7 @@
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using NoughtsAndCrosses;
 
 
@@ -91,8 +92,17 @@ public class NoughtsAndCrossesController : MonoBehaviour {
 	private IEnumerator MakeCPUMove()
 	{
 		_makingCPUMove = true;
-		yield return new WaitForSeconds(0.5f);
-		MakeMove(FindCPUMove());
+		Stopwatch watch = new Stopwatch();
+		watch.Start();
+		Move cpuMove = FindCPUMove();
+		watch.Stop();
+		// Add a little pause if necessary, so that the cpu move doesn't appear instantly
+		float waitTime = (500f - watch.ElapsedMilliseconds) / 1000f;
+		if(waitTime > 0f)
+		{
+			yield return new WaitForSeconds(waitTime);
+		}
+		MakeMove(cpuMove);
 		_makingCPUMove = false;
 	}
 
