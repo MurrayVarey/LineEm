@@ -27,6 +27,13 @@ public class GameManager : MonoBehaviour {
 	public string _sceneName;
 	private bool _soundOn;
 
+	public enum eDifficulty
+	{
+		impossible,
+		possible
+	}
+	private eDifficulty _difficulty;
+
 	void Awake()
 	{
 		DontDestroyOnLoad(gameObject);
@@ -35,6 +42,7 @@ public class GameManager : MonoBehaviour {
 		_scores = new int[2];
 		EventManager.OnGameWon += IncrementScore;
 		_soundOn = true;
+		_difficulty = eDifficulty.impossible;
 	}
 
 	void OnDestroy()
@@ -107,6 +115,16 @@ public class GameManager : MonoBehaviour {
 	public void ToggleSound()
 	{
 		_soundOn = !_soundOn;
+	}
+
+	public void ToggleDifficulty()
+	{
+		_difficulty = _difficulty == eDifficulty.impossible ? eDifficulty.possible : eDifficulty.impossible;
+	}
+
+	public bool IsBeatable()
+	{
+		return _difficulty == eDifficulty.possible;
 	}
 
 }

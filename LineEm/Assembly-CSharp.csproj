@@ -52,6 +52,7 @@
      <Compile Include="Assets\Controller\NoughtsAndCrossesController.cs" />
      <Compile Include="Assets\Model\GridData.cs" />
      <Compile Include="Assets\Model\LineDefinition.cs" />
+     <Compile Include="Assets\View\DifficultyToggler.cs" />
      <Compile Include="Assets\View\Grid.cs" />
      <Compile Include="Assets\View\LoadOnClick.cs" />
      <Compile Include="Assets\View\Menu Scripts\PlayerCountControl.cs" />

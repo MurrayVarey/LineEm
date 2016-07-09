@@ -123,7 +123,8 @@ public class NoughtsAndCrossesController : MonoBehaviour {
 		List<Move> moves = _gridData.GetPossibleMoves();
 		foreach(Move move in moves)
 		{
-			int moveRating = MiniMax(move, _gridData.Copy(), _gameManager.GetTurn());
+			int maxDepth = _gameManager.IsBeatable() ? 2 : -1;
+			int moveRating = MiniMax(move, _gridData.Copy(), _gameManager.GetTurn(), 0, maxDepth);
 			if(moveRating > minRating)
 			{
 				bestMoves.Clear();
@@ -138,19 +139,20 @@ public class NoughtsAndCrossesController : MonoBehaviour {
 		return bestMoves;
 	}
 
-	private int MiniMax(Move move, GridData gridData, int turn)
+	private int MiniMax(Move move, GridData gridData, int turn, int depth, int maxDepth)
 	{
 		// Odd turns are the CPU, and therefore looking for Max.
 		// Even turns are player one.
-		bool isMax = (turn%2) == 1;
+		bool isMax = (turn % 2) == 1;
 		eState moveState = GetPlayerState(turn);
 		bool moveMade = gridData.PlaceMove(move, moveState);
 
 		if(gridData.HasWinner())
 		{
-			return isMax ? 10 : -10;	
+			int winScore = 10 - depth;
+			return isMax ? winScore: -winScore;	
 		}
-		else if(gridData.IsStalemate())
+		else if(gridData.IsStalemate() || depth == maxDepth)
 		{
 			return 0;
 		}
@@ -162,7 +164,7 @@ public class NoughtsAndCrossesController : MonoBehaviour {
 			List<Move> nextMoves = gridData.GetPossibleMoves();
 			foreach(Move nextMove in nextMoves)
 			{
-				int moveRating = MiniMax(nextMove, gridData.Copy(), (turn+1)%2);
+				int moveRating = MiniMax(nextMove, gridData.Copy(), (turn + 1) % 2, depth + 1, maxDepth);
 				if(isMax && moveRating > overallRating)
 				{
 					overallRating = moveRating;
