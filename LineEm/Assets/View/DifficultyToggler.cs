@@ -21,6 +21,6 @@ public class DifficultyToggler : MonoBehaviour {
 
 	private void SetButtonText()
 	{
-		_buttonText.text = _gameManager.IsBeatable() ? "Possible" : "Impossible";	
+		_buttonText.text = _gameManager.IsBeatable() ? "Tricky" : "Impossible";	
 	}
 }

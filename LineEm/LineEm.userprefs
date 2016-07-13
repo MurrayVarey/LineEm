@@ -1,8 +1,9 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Controller\NoughtsAndCrossesController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\View\DifficultyToggler.cs">
     <Files>
-      <File FileName="Assets\Controller\NoughtsAndCrossesController.cs" Line="139" Column="3" />
+      <File FileName="Assets\View\DifficultyToggler.cs" Line="1" Column="1" />
+      <File FileName="Assets\Controller\NoughtsAndCrossesController.cs" Line="1" Column="1" />
       <File FileName="Assets\Controller\GameManager.cs" Line="1" Column="1" />
       <File FileName="Assets\View\Grid.cs" Line="1" Column="1" />
       <File FileName="Assets\View\TileDisplay.cs" Line="1" Column="1" />
@@ -22,6 +23,7 @@
     <BreakpointStore>
       <Breakpoint file="C:\Users\Public\Documents\Unity Projects\LineEm\Assets\Grid.cs" line="23" column="4" />
       <Breakpoint file="C:\Users\murray varey.LOGICOM\Documents\GitHub\LineEm\LineEm\Assets\View\Grid.cs" line="94" column="3" />
+      <Breakpoint file="C:\Users\murray varey.LOGICOM\Documents\GitHub\LineEm\LineEm\Assets\Controller\NoughtsAndCrossesController.cs" line="152" column="4" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
