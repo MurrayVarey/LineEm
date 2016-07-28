@@ -1,23 +1,19 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\View\Quitter.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Controller\CPUMoveFinder.cs">
     <Files>
-      <File FileName="Assets\View\DifficultyToggler.cs" Line="24" Column="57" />
-      <File FileName="Assets\Controller\NoughtsAndCrossesController.cs" Line="146" Column="18" />
-      <File FileName="Assets\Controller\GameManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\View\Grid.cs" Line="1" Column="1" />
-      <File FileName="Assets\View\TileDisplay.cs" Line="1" Column="1" />
-      <File FileName="Assets\View\LoadOnClick.cs" Line="1" Column="1" />
+      <File FileName="Assets\Controller\NoughtsAndCrossesController.cs" Line="87" Column="32" />
+      <File FileName="Assets\Controller\CPUMoveFinder.cs" Line="20" Column="30" />
+      <File FileName="Assets\Controller\GameManager.cs" Line="11" Column="69" />
       <File FileName="Assets\Controller\EventManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Model\GridData.cs" Line="1" Column="1" />
-      <File FileName="Assets\View\Menu Scripts\PlayerCountControl.cs" Line="1" Column="1" />
+      <File FileName="Assets\Model\GridData.cs" Line="13" Column="3" />
       <File FileName="Assets\Controller\IMoveInput.cs" Line="1" Column="1" />
       <File FileName="Assets\Controller\Move.cs" Line="1" Column="1" />
       <File FileName="Assets\Model\LineDefinition.cs" Line="1" Column="1" />
-      <File FileName="Assets\View\ScoreDisplay.cs" Line="1" Column="1" />
-      <File FileName="Assets\View\SoundToggler.cs" Line="1" Column="1" />
-      <File FileName="Assets\View\PlayerToggler.cs" Line="1" Column="1" />
-      <File FileName="Assets\View\Quitter.cs" Line="8" Column="1" />
+      <File FileName="Assets\Model\StatePlayerConverter.cs" Line="11" Column="31" />
+      <File FileName="Assets\View\Grid Scripts\GridDisplay.cs" Line="91" Column="1" />
+      <File FileName="Assets\View\Grid Scripts\TileDisplay.cs" Line="94" Column="30" />
+      <File FileName="Assets\View\Audio\ChalkAudio.cs" Line="13" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
