@@ -54,6 +54,7 @@
      <Compile Include="Assets\Model\GridData.cs" />
      <Compile Include="Assets\Model\LineDefinition.cs" />
      <Compile Include="Assets\Model\StatePlayerConverter.cs" />
+     <Compile Include="Assets\View\Audio\ChalkAudio.cs" />
      <Compile Include="Assets\View\Grid Scripts\GridDisplay.cs" />
      <Compile Include="Assets\View\Grid Scripts\TileDisplay.cs" />
      <Compile Include="Assets\View\UI Scripts\DifficultyToggler.cs" />

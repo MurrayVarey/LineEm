@@ -14,8 +14,6 @@ public class TileDisplay : MonoBehaviour
 	public int _row;
 	public int _column;
 
-	public AudioClip _writingSound;
-
 	private Renderer _renderer;
 
 	private NoughtsAndCrossesController _controller;
@@ -87,17 +85,6 @@ public class TileDisplay : MonoBehaviour
 	public void EnableTopLine(bool active)
 	{
 		transform.Find("TopLine").gameObject.SetActive(active);
-	}
-
-	public void PlaySound()
-	{
-		GameManager gameManager = GameManager.Instance();
-		if(gameManager.IsSoundOn())
-		{
-			AudioSource audio = GetComponent<AudioSource>();
-			audio.clip = _writingSound;
-			audio.Play();
-		}
 	}
 
 	public void SetWinningFlashMaterial(bool flashOn)

@@ -12,7 +12,6 @@ public class GridDisplay : MonoBehaviour
 
 	void Awake()
 	{
-		//EventManager.OnTileClicked += UpdateGridData;
 		EventManager.OnMoveMade += UpdateDisplay;
 	}
 
@@ -21,7 +20,6 @@ public class GridDisplay : MonoBehaviour
 		EventManager.OnMoveMade -= UpdateDisplay;
 	}
 
-	//public void CreateTiles(int width, int height)
 	public void CreateTiles(GridData gridData)
 	{
 		_width = gridData.GetWidth();
@@ -34,6 +32,7 @@ public class GridDisplay : MonoBehaviour
 				GameObject tile = Instantiate(_tilePrefab, tilePosition, Quaternion.Euler(-90, 0, 0)) as GameObject;
 				TileDisplay tileDisplay = tile.GetComponent<TileDisplay>();
 				tileDisplay.SetCoordinates(column, row);
+
 				// Don't display grid lines for the last column/row, so
 				// that we get that traditional noughts and crosses grid.
 				tileDisplay.EnableRightLine(column<_width-1);
@@ -61,7 +60,6 @@ public class GridDisplay : MonoBehaviour
 	{
 		TileDisplay tile = GetTileDisplay(move);
 		tile.UpdateDisplay(moveState);
-		tile.PlaySound();
 	}
 
 	private TileDisplay GetTileDisplay(Move move)
