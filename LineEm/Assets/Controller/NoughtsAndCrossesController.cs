@@ -10,7 +10,7 @@ public class NoughtsAndCrossesController : MonoBehaviour {
 
 	public int _gridWidth = 3;
 	public int _gridHeight = 3;
-	private Grid _gridDisplay;
+	private GridDisplay _gridDisplay;
 
 	private GridData _gridData;
 
@@ -23,7 +23,7 @@ public class NoughtsAndCrossesController : MonoBehaviour {
 		_gameManager = GameManager.Instance();
 		_gridData = new GridData(_gridWidth, _gridHeight);
 
-		_gridDisplay = GameObject.Find("Grid").GetComponent<Grid>();
+		_gridDisplay = GameObject.Find("Grid").GetComponent<GridDisplay>();
 		_gridDisplay.CreateTiles(_gridData);
 	}
 

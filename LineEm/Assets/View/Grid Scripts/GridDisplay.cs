@@ -2,7 +2,7 @@
 using System.Collections;
 using NoughtsAndCrosses;
 
-public class Grid : MonoBehaviour 
+public class GridDisplay : MonoBehaviour 
 {
 
 	public GameObject _tilePrefab;

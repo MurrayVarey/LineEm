@@ -55,8 +55,7 @@ namespace NoughtsAndCrosses
 			// Even turns are player one.
 			bool isMax = (turn % 2) == 1;
 			eState moveState = new StatePlayerConverter().GetPlayerState(turn);
-			bool moveMade = gridData.PlaceMove(move, moveState);
-
+			gridData.PlaceMove(move, moveState);
 			if(gridData.HasWinner())
 			{
 				int winScore = 10 - depth;
