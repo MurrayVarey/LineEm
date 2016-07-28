@@ -6,6 +6,10 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour {
 
+	/*************************************************************************
+	* A class to manage the general game settings, independent of the actual *
+	* game being played. This persists when the game scene is reloaded.      * 
+	*************************************************************************/
 	private static GameManager _instance;
 
 	public static GameManager Instance()
