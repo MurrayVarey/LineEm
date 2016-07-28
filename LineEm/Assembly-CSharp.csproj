@@ -52,15 +52,13 @@
      <Compile Include="Assets\Controller\NoughtsAndCrossesController.cs" />
      <Compile Include="Assets\Model\GridData.cs" />
      <Compile Include="Assets\Model\LineDefinition.cs" />
-     <Compile Include="Assets\View\DifficultyToggler.cs" />
-     <Compile Include="Assets\View\Grid.cs" />
-     <Compile Include="Assets\View\LoadOnClick.cs" />
-     <Compile Include="Assets\View\Menu Scripts\PlayerCountControl.cs" />
-     <Compile Include="Assets\View\PlayerToggler.cs" />
-     <Compile Include="Assets\View\Quitter.cs" />
-     <Compile Include="Assets\View\ScoreDisplay.cs" />
-     <Compile Include="Assets\View\SoundToggler.cs" />
-     <Compile Include="Assets\View\TileDisplay.cs" />
+     <Compile Include="Assets\View\Grid Scripts\Grid.cs" />
+     <Compile Include="Assets\View\Grid Scripts\TileDisplay.cs" />
+     <Compile Include="Assets\View\UI Scripts\DifficultyToggler.cs" />
+     <Compile Include="Assets\View\UI Scripts\PlayerToggler.cs" />
+     <Compile Include="Assets\View\UI Scripts\Quitter.cs" />
+     <Compile Include="Assets\View\UI Scripts\ScoreDisplay.cs" />
+     <Compile Include="Assets\View\UI Scripts\SoundToggler.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

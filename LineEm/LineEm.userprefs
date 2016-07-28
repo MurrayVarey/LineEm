@@ -1,9 +1,9 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\View\DifficultyToggler.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\View\Quitter.cs">
     <Files>
-      <File FileName="Assets\View\DifficultyToggler.cs" Line="1" Column="1" />
-      <File FileName="Assets\Controller\NoughtsAndCrossesController.cs" Line="1" Column="1" />
+      <File FileName="Assets\View\DifficultyToggler.cs" Line="24" Column="57" />
+      <File FileName="Assets\Controller\NoughtsAndCrossesController.cs" Line="146" Column="18" />
       <File FileName="Assets\Controller\GameManager.cs" Line="1" Column="1" />
       <File FileName="Assets\View\Grid.cs" Line="1" Column="1" />
       <File FileName="Assets\View\TileDisplay.cs" Line="1" Column="1" />
@@ -17,13 +17,14 @@
       <File FileName="Assets\View\ScoreDisplay.cs" Line="1" Column="1" />
       <File FileName="Assets\View\SoundToggler.cs" Line="1" Column="1" />
       <File FileName="Assets\View\PlayerToggler.cs" Line="1" Column="1" />
+      <File FileName="Assets\View\Quitter.cs" Line="8" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="C:\Users\Public\Documents\Unity Projects\LineEm\Assets\Grid.cs" line="23" column="4" />
       <Breakpoint file="C:\Users\murray varey.LOGICOM\Documents\GitHub\LineEm\LineEm\Assets\View\Grid.cs" line="94" column="3" />
-      <Breakpoint file="C:\Users\murray varey.LOGICOM\Documents\GitHub\LineEm\LineEm\Assets\Controller\NoughtsAndCrossesController.cs" line="152" column="4" />
+      <Breakpoint file="C:\Users\murray varey.LOGICOM\Documents\GitHub\LineEm\LineEm\Assets\View\Quitter.cs" line="8" column="3" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
