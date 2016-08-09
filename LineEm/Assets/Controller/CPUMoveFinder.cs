@@ -34,11 +34,12 @@ namespace NoughtsAndCrosses
 			List<Move> bestMoves = new List<Move>();
 			GameManager gameManager = GameManager.Instance();
 
+			int turn = 1;
 			int minRating = -20;
 			List<Move> moves = _gridData.GetPossibleMoves();
 			foreach(Move move in moves)
 			{
-				int moveRating = MiniMax(move, _gridData.Copy(), gameManager.GetTurn(), 0);
+				int moveRating = MiniMax(move, _gridData.Copy(), turn, 0);
 				if(moveRating > minRating)
 				{
 					bestMoves.Clear();
@@ -51,6 +52,12 @@ namespace NoughtsAndCrosses
 				}
 			}
 			return bestMoves;
+		}
+
+		private bool IsCPUMove(int turn)
+		{
+			// Odd turns are the CPU; Even turns are Player 1.
+			return (turn % 2) == 1;
 		}
 
 		private int MiniMax(Move move, GridData gridData, int turn, int depth)
@@ -66,15 +73,12 @@ namespace NoughtsAndCrosses
 
 			// We limit the depth, in order to create a beatable CPU.
 
-			// Odd turns are the CPU, and therefore looking for Max.
-			// Even turns are player one.
-			bool isCPUMove = (turn % 2) == 1;
 			eState moveState = new StatePlayerConverter().GetPlayerState(turn);
 			gridData.PlaceMove(move, moveState);
 			if(gridData.HasWinner())
 			{
 				int winScore = 10 - depth;
-				return isCPUMove ? winScore: -winScore;	
+				return IsCPUMove(turn) ? winScore: -winScore;	
 			}
 			else if(gridData.IsStalemate() || depth == _maxDepth)
 			{
@@ -82,23 +86,25 @@ namespace NoughtsAndCrosses
 			}
 			else
 			{
-				isCPUMove = !isCPUMove;
-				int overallRating = isCPUMove ? -20 : 20;
+				// Game is neither won nor a stalemate. Therefore, we'll keep playing.
+				int nextTurn = (turn + 1) % 2;
+				int bestScore = -20;
 
 				List<Move> nextMoves = gridData.GetPossibleMoves();
 				foreach(Move nextMove in nextMoves)
 				{
-					int moveRating = MiniMax(nextMove, gridData.Copy(), (turn + 1) % 2, depth + 1);
-					if(isCPUMove && moveRating > overallRating)
+					int score = MiniMax(nextMove, gridData.Copy(), nextTurn, depth + 1);
+					// Player move will return a negative score if it has won. Negate it for
+					// now so that it is positive and will be seen as the player's best move.
+					score = IsCPUMove(nextTurn) ? score : -score;
+					if(score > bestScore)
 					{
-						overallRating = moveRating;
-					}
-					else if(!isCPUMove && moveRating < overallRating)
-					{
-						overallRating = moveRating;
-					}
+						bestScore = score;
+					} 
 				}
-				return overallRating;
+				// Player move has negated to find the best score. Turn it back, so that it
+				// gives an accurate score for CPU move.
+				return IsCPUMove(nextTurn) ? bestScore: -bestScore;
 			}
 		} 
 	}
