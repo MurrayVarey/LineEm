@@ -25,26 +25,31 @@ public class NoughtsAndCrossesController : MonoBehaviour {
 	void Start () 
 	{
 		_gameManager = GameManager.Instance();
+
+		// Create empty grid data
 		_gridData = new GridData(_gridWidth, _gridHeight);
 
+		// Create the grid graphics
 		_gridDisplay = GameObject.Find("Grid").GetComponent<GridDisplay>();
 		_gridDisplay.CreateTiles(_gridData);
 	}
 
 	void Awake()
 	{
-		EventManager.OnGameWon += DrawWinningLine;
+		EventManager.OnGameWon += HighlightWinningLine;
 	}
 
 	void OnDestroy()
 	{
-		EventManager.OnGameWon -= DrawWinningLine;
+		EventManager.OnGameWon -= HighlightWinningLine;
 	}
 
 	void Update()
 	{
 		if(ExpectingCPUMove())
 		{
+			// Waiting for a CPU move, so let's calculate it. This is done
+			// as a coroutine, in order to keep the UI alive.
 			StartCoroutine(MakeCPUMove());
 		}
 	}
@@ -80,7 +85,7 @@ public class NoughtsAndCrossesController : MonoBehaviour {
 		}
 	}
 
-	public void DrawWinningLine(int winner, LineDefinition winningLine)
+	public void HighlightWinningLine(int winner, LineDefinition winningLine)
 	{
 		if(winningLine != null)
 		{
